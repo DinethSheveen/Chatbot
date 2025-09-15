@@ -12,8 +12,8 @@ function ChatInput(){
 }
 
 function ChatMessage(props){
-  let message = props.message
-  let sender = props.sender
+  const {sender,message} = props
+
   
   if(sender === "user"){
     return(
