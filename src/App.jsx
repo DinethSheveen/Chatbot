@@ -13,24 +13,15 @@ function ChatInput(){
 
 function ChatMessage(props){
   const {sender,message} = props
-
   
-  if(sender === "user"){
-    return(
+  
+  return(
       <div className='msg'>
+        {sender === "bot" && <img src= {botIcon} className="profile-icon" alt="msg-icon" />}
         <span className='text'>{message}</span>
-        <img src= {profileIcon} className="profile-icon" alt="msg-icon" />
+        {sender === "user" && <img src= {profileIcon} className="profile-icon" alt="msg-icon" />}
       </div>
-    )
-  }
-  else{
-    return(
-      <div className='msg'>
-        <img src= {botIcon} className="profile-icon" alt="msg-icon" />
-        <span className='text'>{message}</span>
-      </div>
-    )
-  }
+  )
 }
 
 function App() {
