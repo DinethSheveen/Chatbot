@@ -14,7 +14,6 @@ function ChatInput(){
 function ChatMessage(props){
   const {sender,message} = props
   
-  
   return(
       <div className='msg'>
         {sender === "bot" && <img src= {botIcon} className="profile-icon" alt="msg-icon" />}
@@ -25,13 +24,36 @@ function ChatMessage(props){
 }
 
 function App() {
+
+  const messages = [
+    {
+      message : "Hello Chatbot",
+      sender : "user"
+    },
+    {
+      message : "Hello?  How can I help you?",
+      sender : "bot"
+    },
+    {
+      message : "Can you get me today's date",
+      sender : "user"
+    },
+    {
+      message : "Today is September 27",
+      sender : "bot"
+    }
+  ];
+
+  const messagesComponent = messages.map((message)=>{
+    return (
+      <ChatMessage message = {message.message} sender = {message.sender} />
+    )
+  }) 
+
   return (
     <>
       <ChatInput/>
-      <ChatMessage sender="user" message="Hello Chatbot"/>
-      <ChatMessage sender="bot" message="Hello?  How can I help you?"/>
-      <ChatMessage sender="user" message="Can you get me today's date"/>
-      <ChatMessage sender="bot" message="Today is September 27"/>
+      {messagesComponent}
     </>
   )
 }
