@@ -44,16 +44,16 @@ function App() {
     }
   ];
 
-  const messagesComponent = messages.map((message)=>{
-    return (
-      <ChatMessage message = {message.message} sender = {message.sender} />
-    )
-  }) 
-
   return (
     <>
       <ChatInput/>
-      {messagesComponent}
+      {
+        messages.map((message)=>{
+          return (
+            <ChatMessage message = {message.message} sender = {message.sender} />
+          )
+        }) 
+      }
     </>
   )
 }
