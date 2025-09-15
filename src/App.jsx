@@ -1,33 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import profileIcon from "./assets/profile-icon.svg" 
+import botIcon from "./assets/chatbot.svg"
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function ChatInput(){
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <input type="search" placeholder='Send a message to Chatbot...' size="30"/>
+      <button>Send</button>
+    </>
+  )
+}
+
+function ChatMessage(props){
+  let message = props.message
+  let sender = props.sender
+  
+  if(sender === "user"){
+    return(
+      <div className='msg'>
+        <span className='text'>{message}</span>
+        <img src= {profileIcon} className="profile-icon" alt="msg-icon" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    )
+  }
+  else{
+    return(
+      <div className='msg'>
+        <img src= {botIcon} className="profile-icon" alt="msg-icon" />
+        <span className='text'>{message}</span>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    )
+  }
+}
+
+function App() {
+  return (
+    <>
+      <ChatInput/>
+      <ChatMessage sender="user" message="Hello Chatbot"/>
+      <ChatMessage sender="bot" message="Hello?  How can I help you?"/>
+      <ChatMessage sender="user" message="Can you get me today's date"/>
+      <ChatMessage sender="bot" message="Today is September 27"/>
     </>
   )
 }
