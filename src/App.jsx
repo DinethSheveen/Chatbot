@@ -28,19 +28,23 @@ function App() {
   const messages = [
     {
       message : "Hello Chatbot",
-      sender : "user"
+      sender : "user",
+      id:"id1"
     },
     {
       message : "Hello?  How can I help you?",
-      sender : "bot"
+      sender : "bot",
+      id:"id2"
     },
     {
       message : "Can you get me today's date",
-      sender : "user"
+      sender : "user",
+      id:"id3"
     },
     {
       message : "Today is September 27",
-      sender : "bot"
+      sender : "bot",
+      id:"id4"
     }
   ];
 
