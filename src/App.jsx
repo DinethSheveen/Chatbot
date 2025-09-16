@@ -46,8 +46,8 @@ function ChatInput(props){
 
   return (
     <>
-      <input type="search" placeholder='Send a message to Chatbot...' size="30" onChange={saveText} onKeyDown={sendTextOnKey} value={textInput}/>
-      <button onClick={sendText}>Send</button>
+      <input type="search" className="text-input" placeholder='Send a message to Chatbot...' size="30" onChange={saveText} onKeyDown={sendTextOnKey} value={textInput}/>
+      <button className='send-btn' onClick={sendText}>Send</button>
     </>
   )
 }
