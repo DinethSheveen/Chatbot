@@ -3,11 +3,32 @@ import profileIcon from "./assets/profile-icon.svg"
 import botIcon from "./assets/chatbot.svg"
 import { useState } from 'react'
 
-function ChatInput(){
+function ChatInput(props){
+  const{messages,setMessages} = props
+
+  const [textInput,setTextInput] = useState("")
+
+  function saveText(event){
+    setTextInput(event.target.value);
+  }
+  
+  function sendText(){
+    setMessages([
+        ...messages,
+        {
+          message : textInput,
+          sender : "user",
+          id : crypto.randomUUID() 
+        }
+      ]
+    )
+    setTextInput("")
+  }
+
   return (
     <>
-      <input type="search" placeholder='Send a message to Chatbot...' size="30"/>
-      <button>Send</button>
+      <input type="search" placeholder='Send a message to Chatbot...' size="30" onChange={saveText} value={textInput}/>
+      <button onClick={sendText}>Send</button>
     </>
   )
 }
@@ -24,7 +45,22 @@ function ChatMessage(props){
   )
 }
 
-function ChatMessages(){
+function ChatMessages(props){
+  const {messages,setMessages} = props
+  return(
+    <>
+      {
+        messages.map((message)=>{
+          return (
+            <ChatMessage message = {message.message} sender = {message.sender} key={message.id} />
+          )
+        }) 
+      }
+    </>
+  )
+}
+
+function App() {
   const [messages,setMessages] = useState([
     {
       message : "Hello Chatbot",
@@ -48,38 +84,10 @@ function ChatMessages(){
     }
   ])
 
-  function SendMessage(){
-    setMessages([
-        ...messages,
-        {
-          message : "testing message",
-          sender : "user",
-          id : crypto.randomUUID() 
-        }
-      ]
-    )
-  }
-
-  return(
-    <>
-    <button onClick={SendMessage}>Send Message</button>
-      {
-        messages.map((message)=>{
-          return (
-            <ChatMessage message = {message.message} sender = {message.sender} key={message.id} />
-          )
-        }) 
-      }
-    </>
-  )
-
-}
-
-function App() {
   return (
     <>
-      <ChatInput/>
-      <ChatMessages />
+      <ChatInput messages = {messages} setMessages={setMessages}/>
+      <ChatMessages messages = {messages} setMessages={setMessages}/>
     </>
   )
 }
