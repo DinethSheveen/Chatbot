@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+#root{
+  backdrop-filter: blur(20px);
+}
+
 .msg{
   display: flex;
   align-items: center;
@@ -13,7 +17,8 @@
   margin: 0;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: hsl(120, 93%, 50%);
+  background-color: hsl(43, 74%, 55%);
+  /* background-color: hsl(120, 93%, 50%); */
   padding: 5px;
   border-radius: 50%;
 }
@@ -22,6 +27,21 @@
   background-color: lightgrey;
   padding: 0.5rem;
   border-radius: 5px;
+}
+
+.text-input,.send-btn{
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  border-width:1px;
+  font-size: 1rem;
+}
+
+.send-btn{
+  cursor: pointer;
+  border: none;
+  margin-left: 10px;
+  background-color: hsl(43, 74%, 55%);
+  flex:1;
 }
 
 
