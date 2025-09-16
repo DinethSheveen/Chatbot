@@ -45,10 +45,10 @@ function ChatInput(props){
   }
 
   return (
-    <>
+    <div className='input-container'>
       <input type="search" className="text-input" placeholder='Send a message to Chatbot...' size="30" onChange={saveText} onKeyDown={sendTextOnKey} value={textInput}/>
       <button className='send-btn' onClick={sendText}>Send</button>
-    </>
+    </div>
   )
 }
 
@@ -104,10 +104,10 @@ function App() {
   ])
 
   return (
-    <>
+    <div className='msg-container'>
       <ChatInput messages = {messages} setMessages={setMessages}/>
       <ChatMessages messages = {messages} setMessages={setMessages}/>
-    </>
+    </div>
   )
 }
 
