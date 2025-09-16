@@ -34,9 +34,26 @@
 }
 /* INPUT CONTAINER STYLING ENDS */
 
+/* MESSAGES STYLING BEGINS */
 .msg{
   display: flex;
   align-items: center;
+  background-color: lightgrey;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.bot-msg,.user-msg{
+  display: flex;
+  margin-top: 1rem;
+}
+
+.user-msg{
+  justify-content: flex-end;
+}
+.bot-msg{
+  justify-content: flex-start;
 }
 
 .profile-icon{
@@ -48,14 +65,7 @@
   padding: 5px;
   border-radius: 50%;
 }
-
-.text{
-  background-color: lightgrey;
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-
+/* MESSAGES STYLING ENDS */
 
 
 
