@@ -1,6 +1,7 @@
 import './App.css'
 import profileIcon from "./assets/profile-icon.svg" 
 import botIcon from "./assets/chatbot.svg"
+import { useState } from 'react'
 
 function ChatInput(){
   return (
@@ -23,9 +24,8 @@ function ChatMessage(props){
   )
 }
 
-function App() {
-
-  const messages = [
+function ChatMessages(){
+  const [messages,setMessages] = useState([
     {
       message : "Hello Chatbot",
       sender : "user",
@@ -46,18 +46,40 @@ function App() {
       sender : "bot",
       id:"id4"
     }
-  ];
+  ])
 
-  return (
+  function SendMessage(){
+    setMessages([
+        ...messages,
+        {
+          message : "testing message",
+          sender : "user",
+          id : crypto.randomUUID() 
+        }
+      ]
+    )
+  }
+
+  return(
     <>
-      <ChatInput/>
+    <button onClick={SendMessage}>Send Message</button>
       {
         messages.map((message)=>{
           return (
-            <ChatMessage message = {message.message} sender = {message.sender} />
+            <ChatMessage message = {message.message} sender = {message.sender} key={message.id} />
           )
         }) 
       }
+    </>
+  )
+
+}
+
+function App() {
+  return (
+    <>
+      <ChatInput/>
+      <ChatMessages />
     </>
   )
 }
