@@ -4,9 +4,35 @@
   margin: 0;
 }
 
-#root{
-  backdrop-filter: blur(20px);
+.msg-container{
+  max-width: 600px;
+  margin: 0 auto;
 }
+
+/*  INPUT CONTAINER STYLING BEGINS */
+.input-container{
+  display: flex;
+}
+
+.text-input{
+  flex-grow: 3;
+}
+
+.text-input,.send-btn{
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  border-width:1px;
+  font-size: 1rem;
+}
+
+.send-btn{
+  cursor: pointer;
+  border: none;
+  margin-left: 10px;
+  background-color: hsl(43, 74%, 55%);
+  flex:1;
+}
+/* INPUT CONTAINER STYLING ENDS */
 
 .msg{
   display: flex;
@@ -27,21 +53,6 @@
   background-color: lightgrey;
   padding: 0.5rem;
   border-radius: 5px;
-}
-
-.text-input,.send-btn{
-  padding: 0.5rem 1rem;
-  border-radius: 7px;
-  border-width:1px;
-  font-size: 1rem;
-}
-
-.send-btn{
-  cursor: pointer;
-  border: none;
-  margin-left: 10px;
-  background-color: hsl(43, 74%, 55%);
-  flex:1;
 }
 
 
