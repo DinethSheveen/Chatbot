@@ -35,14 +35,18 @@ function ChatInput(props){
           id : crypto.randomUUID() 
         }
     ])
-
-
     setTextInput("")
+  }
+
+  function sendTextOnKey(event){
+    if(event.key==="Enter"){
+      sendText()
+    };
   }
 
   return (
     <>
-      <input type="search" placeholder='Send a message to Chatbot...' size="30" onChange={saveText} value={textInput}/>
+      <input type="search" placeholder='Send a message to Chatbot...' size="30" onChange={saveText} onKeyDown={sendTextOnKey} value={textInput}/>
       <button onClick={sendText}>Send</button>
     </>
   )
@@ -61,7 +65,7 @@ function ChatMessage(props){
 }
 
 function ChatMessages(props){
-  const {messages,setMessages} = props
+  const {messages} = props
   return(
     <>
       {
