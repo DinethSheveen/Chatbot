@@ -2,6 +2,7 @@ import './App.css'
 import profileIcon from "./assets/profile-icon.svg" 
 import botIcon from "./assets/chatbot.svg"
 import { useState } from 'react'
+import "https://unpkg.com/supersimpledev@8.6.4/chatbot.js"
 
 function ChatInput(props){
   const{messages,setMessages} = props
@@ -13,7 +14,7 @@ function ChatInput(props){
   }
   
   function sendText(){
-    setMessages([
+    const newMessage = [
         ...messages,
         {
           message : textInput,
@@ -21,7 +22,21 @@ function ChatInput(props){
           id : crypto.randomUUID() 
         }
       ]
-    )
+    
+    setMessages(newMessage)
+
+    let response = Chatbot.getResponse(textInput)
+
+    setMessages([
+      ...newMessage,
+      {
+          message : response,
+          sender : "bot",
+          id : crypto.randomUUID() 
+        }
+    ])
+
+
     setTextInput("")
   }
 
