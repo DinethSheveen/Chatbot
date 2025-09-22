@@ -1,7 +1,7 @@
 import './App.css'
 import profileIcon from "./assets/profile-icon.svg" 
 import botIcon from "./assets/chatbot.svg"
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import "https://unpkg.com/supersimpledev@8.6.4/chatbot.js"
 
 function ChatInput(props){
@@ -66,8 +66,18 @@ function ChatMessage(props){
 
 function ChatMessages(props){
   const {messages} = props
+
+  const messageRef = useRef(null)
+
+  useEffect(()=>{
+    const currentMsgElement = messageRef.current;
+    if(currentMsgElement){
+      currentMsgElement.scrollTop = currentMsgElement.scrollHeight
+    }
+  },[messages])
+
   return(
-    <>
+    <div className='msg-container' ref={messageRef}>
       {
         messages.map((message)=>{
           return (
@@ -75,7 +85,7 @@ function ChatMessages(props){
           )
         }) 
       }
-    </>
+    </div >
   )
 }
 
@@ -104,9 +114,9 @@ function App() {
   ])
 
   return (
-    <div className='msg-container'>
-      <ChatInput messages = {messages} setMessages={setMessages}/>
+    <div className='app-container'>
       <ChatMessages messages = {messages} setMessages={setMessages}/>
+      <ChatInput messages = {messages} setMessages={setMessages}/>
     </div>
   )
 }
