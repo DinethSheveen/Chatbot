@@ -4,14 +4,24 @@
   margin: 0;
 }
 
-.msg-container{
+.app-container{
   max-width: 600px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.msg-container{
+  flex-grow: 1;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 /*  INPUT CONTAINER STYLING BEGINS */
 .input-container{
   display: flex;
+  margin: 1rem 0;
 }
 
 .text-input{
@@ -42,6 +52,7 @@
   padding: 0.2rem 0.5rem;
   border-radius: 10px;
   margin: 0 10px;
+  max-width: 350px;
 }
 
 .bot-msg,.user-msg{
